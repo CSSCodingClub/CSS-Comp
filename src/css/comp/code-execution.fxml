@@ -14,7 +14,8 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <TextArea layoutX="108.0" layoutY="59.0" prefHeight="264.0" prefWidth="397.0" wrapText="true" />
-      <Button layoutX="271.0" layoutY="341.0" mnemonicParsing="false" text="Run Code" />
+      <TextArea fx:id="userCode" layoutX="108.0" layoutY="59.0" prefHeight="264.0" prefWidth="397.0" wrapText="true" />
+      <Button fx:id="runButton" layoutX="271.0" layoutY="341.0" mnemonicParsing="false" onAction="#runcode" text="Run Code" />
+      <Label fx:id="label" layoutX="93.0" layoutY="360.0" text="Label" />
    </children>
 </AnchorPane>
