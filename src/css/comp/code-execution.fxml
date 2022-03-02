@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="css.comp.executionController">
+<AnchorPane id="AnchorPane" prefHeight="416.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="css.comp.executionController">
    <children>
       <Label layoutX="260.0" layoutY="14.0" text="Version 1.0">
          <font>
@@ -16,6 +16,8 @@
       </Label>
       <TextArea fx:id="userCode" layoutX="108.0" layoutY="59.0" prefHeight="264.0" prefWidth="397.0" wrapText="true" />
       <Button fx:id="runButton" layoutX="271.0" layoutY="341.0" mnemonicParsing="false" onAction="#runcode" text="Run Code" />
-      <Label fx:id="label" layoutX="93.0" layoutY="360.0" text="Label" />
+      <Label fx:id="label" layoutX="131.0" layoutY="360.0" text="Label" />
+      <Label layoutX="44.0" layoutY="360.0" text="Ouput of code:" />
+      <ChoiceBox fx:id="language" layoutX="56.0" layoutY="23.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

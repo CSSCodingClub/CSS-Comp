@@ -7,6 +7,7 @@ package css.comp;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -15,10 +16,13 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
@@ -35,21 +39,30 @@ public class executionController implements Initializable {
     private Button runButton;
     @FXML
     private Label label;
+    @FXML
+    private ChoiceBox languages;
     
     
     @FXML
     private void runcode(ActionEvent event) throws MalformedURLException, ProtocolException, IOException {
         
         String code = userCode.getText();
+    
         
         try (Writer writer = new BufferedWriter(new OutputStreamWriter(
               new FileOutputStream("./DB/Testcode.py"), "utf-8"))) {
         writer.write(code);
-}
-       
+        }
+        
+        Process p = Runtime.getRuntime().exec("python ./DB/Testcode.py");
+        BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+        String ret = in.readLine();
+        System.out.println("value is : "+ret);
+        label.setText(ret);
         
         
     }
+    
     
     /**
      * Initializes the controller class.
@@ -57,6 +70,8 @@ public class executionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+         
+
     }    
     
 }
