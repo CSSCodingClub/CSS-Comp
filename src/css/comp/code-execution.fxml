@@ -15,9 +15,9 @@
          </font>
       </Label>
       <TextArea fx:id="userCode" layoutX="108.0" layoutY="59.0" prefHeight="264.0" prefWidth="397.0" wrapText="true" />
-      <Button fx:id="runButton" layoutX="271.0" layoutY="341.0" mnemonicParsing="false" onAction="#runcode" text="Run Code" />
+      <Button fx:id="runButton" layoutX="227.0" layoutY="342.0" mnemonicParsing="false" onAction="#runcode" text="Run Python Code" />
       <Label fx:id="label" layoutX="131.0" layoutY="360.0" text="Label" />
       <Label layoutX="44.0" layoutY="360.0" text="Ouput of code:" />
-      <ChoiceBox fx:id="language" layoutX="56.0" layoutY="23.0" prefWidth="150.0" />
+      <Button fx:id="javaButton" layoutX="364.0" layoutY="342.0" mnemonicParsing="false" onAction="#runJava" text="Run  Java Code" />
    </children>
 </AnchorPane>

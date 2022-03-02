@@ -4,6 +4,7 @@
  */
 package css.comp;
 
+import java.awt.Checkbox;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
@@ -38,11 +39,10 @@ public class executionController implements Initializable {
     @FXML
     private Button runButton;
     @FXML
-    private Label label;
+    private Button javaButton;
     @FXML
-    private ChoiceBox languages;
-    
-    
+    private Label label;
+
     @FXML
     private void runcode(ActionEvent event) throws MalformedURLException, ProtocolException, IOException {
         
@@ -63,6 +63,27 @@ public class executionController implements Initializable {
         
     }
     
+    @FXML
+    private void runJava(ActionEvent event) throws MalformedURLException, ProtocolException, IOException {
+        
+        String code = userCode.getText();
+    
+        
+        try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+              new FileOutputStream("./DB/Testcode.java"), "utf-8"))) {
+        writer.write(code);
+        }
+        
+        Process p = Runtime.getRuntime().exec("java ./DB/Testcode.java");
+        BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+        String ret = in.readLine();
+        System.out.println("value is : "+ret);
+        label.setText(ret);
+        
+        
+    }
+    
+  
     
     /**
      * Initializes the controller class.
