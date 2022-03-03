@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,18 +8,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="413.0" prefWidth="507.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="css.comp.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="413.0" prefWidth="507.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="css.comp.FXMLDocumentController">
     <children>
-        <Button fx:id="button" layoutX="229.0" layoutY="273.0" onAction="#handleButtonAction" text="Login" />
+        <Button fx:id="button" layoutX="229.0" layoutY="273.0" onAction="#handleButtonAction" text="Login" AnchorPane.bottomAnchor="113.0" AnchorPane.leftAnchor="229.0" AnchorPane.rightAnchor="229.0" AnchorPane.topAnchor="273.0" />
         <Label fx:id="label" layoutX="229.0" layoutY="237.0" minHeight="16" minWidth="69" />
-      <Label layoutX="140.0" layoutY="51.0" text="CSS Coding Competition" textFill="#0015ff">
+      <Label layoutX="123.0" layoutY="50.0" text="CSS Coding Competition" textFill="#0015ff" AnchorPane.bottomAnchor="332.0" AnchorPane.leftAnchor="123.0" AnchorPane.topAnchor="50.0">
          <font>
-            <Font size="22.0" />
+            <Font name="Ayuthaya" size="22.0" />
          </font>
       </Label>
-      <Label layoutX="140.0" layoutY="160.0" text="Username:" />
-      <Label layoutX="141.0" layoutY="207.0" text="Password:" />
-      <TextField fx:id="username" layoutX="210.0" layoutY="155.0" />
-      <PasswordField fx:id="password" layoutX="210.0" layoutY="201.0" />
+      <Label layoutX="131.0" layoutY="160.0" text="Username:" AnchorPane.bottomAnchor="236.0" AnchorPane.leftAnchor="131.0" AnchorPane.rightAnchor="316.0" AnchorPane.topAnchor="160.0" />
+      <Label layoutX="133.0" layoutY="207.0" text="Password:" AnchorPane.bottomAnchor="189.0" AnchorPane.leftAnchor="133.0" AnchorPane.rightAnchor="314.0" AnchorPane.topAnchor="207.0" />
+      <TextField fx:id="username" layoutX="204.0" layoutY="155.0" AnchorPane.bottomAnchor="231.0" AnchorPane.leftAnchor="204.0" AnchorPane.rightAnchor="142.0" AnchorPane.topAnchor="155.0" />
+      <PasswordField fx:id="password" layoutX="204.0" layoutY="201.0" AnchorPane.bottomAnchor="185.0" AnchorPane.leftAnchor="204.0" AnchorPane.rightAnchor="142.0" AnchorPane.topAnchor="201.0" />
     </children>
 </AnchorPane>
