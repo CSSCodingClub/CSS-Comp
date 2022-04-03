@@ -62,11 +62,11 @@ public class FXMLDocumentController implements Initializable {
         System.out.println(http.getResponseCode() + " " + http.getResponseMessage());
         System.out.println(http.getResponseMessage());
         http.disconnect();
-        
-        
-        if("OK".equals(http.getResponseMessage().toString())){
-        
         */
+        
+        //if("OK".equals(http.getResponseMessage().toString())){
+        
+        
         Parent root;
         try {
             root = FXMLLoader.load(getClass().getClassLoader().getResource("css/comp/code-execution.fxml"));
@@ -82,10 +82,10 @@ public class FXMLDocumentController implements Initializable {
         }
         
    
-   //}
-     //   else{
+       // }
+        //else{
     //label.setText("Invalid Username or Password");
-//}
+    //}
     }
     
 

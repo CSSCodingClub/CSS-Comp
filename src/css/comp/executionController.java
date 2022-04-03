@@ -16,7 +16,9 @@ import java.io.Writer;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.stream.Stream;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -53,12 +55,22 @@ public class executionController implements Initializable {
               new FileOutputStream("./DB/Testcode.py"), "utf-8"))) {
         writer.write(code);
         }
-        
+        Stream ret;
         Process p = Runtime.getRuntime().exec("python ./DB/Testcode.py");
         BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
-        String ret = in.readLine();
-        System.out.println("value is : "+ret);
-        label.setText(ret);
+        
+            
+             ret = in.lines();
+            Object[] array = ret.toArray();
+            
+            for(Object val : array){
+                System.out.println(val.toString());
+            }
+             
+        
+       
+        //System.out.println("value is : "+ret);
+        //label.setText(ret);
         
         
     }
