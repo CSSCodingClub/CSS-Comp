@@ -23,11 +23,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  *
@@ -41,6 +41,8 @@ public class FXMLDocumentController implements Initializable {
     private TextField username;
     @FXML
     private PasswordField password;
+    @FXML 
+    private Hyperlink resetPassword;
     
     @FXML
     private void handleButtonAction(ActionEvent event) throws MalformedURLException, ProtocolException, IOException {
@@ -70,30 +72,42 @@ public class FXMLDocumentController implements Initializable {
         
         Parent root;
         try {
-            root = FXMLLoader.load(getClass().getClassLoader().getResource("css/comp/Home.fxml"));
-            
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("css/comp/code-execution.fxml"));
             Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            //stage.initStyle(StageStyle.UNDECORATED);
-            //stage.setTitle("My New Stage Title");
-            //stage.setScene(new Scene(root, 600, 450));
+            stage.setTitle("Code Execution");
+            stage.setScene(new Scene(root, 600, 450));
             stage.show();
             // Hide this current window (if this is what you want)
             ((Node)(event.getSource())).getScene().getWindow().hide();
         }
         catch (IOException e) {
             e.printStackTrace();
-            
         }
         
    
         }
+        
         else{
-    label.setText("Invalid Username or Password");
-    }
+            label.setText("Invalid Username or Password");
+        }
     }
     
-
+    @FXML
+    private void handleResetPassword(ActionEvent event) throws MalformedURLException, ProtocolException, IOException {
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("css/comp/FXMLResetPassword.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Reset Password");
+            stage.setScene(new Scene(root, 600, 450));
+            stage.show();
+            // Hide this current window (if this is what you want)
+            ((Node)(event.getSource())).getScene().getWindow().hide();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
    
     
     @Override

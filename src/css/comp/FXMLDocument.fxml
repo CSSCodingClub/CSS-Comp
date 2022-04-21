@@ -20,6 +20,7 @@
       <Label layoutX="131.0" layoutY="160.0" text="Username:" AnchorPane.bottomAnchor="236.0" AnchorPane.leftAnchor="131.0" AnchorPane.rightAnchor="316.0" AnchorPane.topAnchor="160.0" />
       <Label layoutX="133.0" layoutY="207.0" text="Password:" AnchorPane.bottomAnchor="189.0" AnchorPane.leftAnchor="133.0" AnchorPane.rightAnchor="314.0" AnchorPane.topAnchor="207.0" />
       <TextField fx:id="username" layoutX="204.0" layoutY="155.0" AnchorPane.bottomAnchor="231.0" AnchorPane.leftAnchor="204.0" AnchorPane.rightAnchor="142.0" AnchorPane.topAnchor="155.0" />
-      <PasswordField fx:id="password" layoutX="204.0" layoutY="201.0" AnchorPane.bottomAnchor="185.0" AnchorPane.leftAnchor="204.0" AnchorPane.rightAnchor="142.0" AnchorPane.topAnchor="201.0" />
+      <PasswordField fx:id="password" layoutX="204.0" layoutY="201.0" onAction="#handleButtonAction" AnchorPane.bottomAnchor="185.0" AnchorPane.leftAnchor="204.0" AnchorPane.rightAnchor="142.0" AnchorPane.topAnchor="201.0" />
+      <Hyperlink fx:id="resetPassword" alignment="CENTER" contentDisplay="CENTER" layoutX="186.0" layoutY="333.0" onAction="#handleResetPassword" text="Reset Password" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="333.0" />
     </children>
 </AnchorPane>

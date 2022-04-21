@@ -26,6 +26,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
@@ -44,33 +45,58 @@ public class executionController implements Initializable {
     private Button javaButton;
     @FXML
     private Label label;
+    
+    @FXML
+    private ComboBox languageSelect;
+    @FXML
+    private Button insertCodeButton;
+    
+    //Create an array of languages
+    private final String[] LANGUAGES = {"Python", "Java"};
+    
+    //Observable list to store in combobox
+    private final ObservableList<String> LANGUAGE_LIST = FXCollections.observableArrayList(LANGUAGES);
+    
+    private final String JAVA_START_CODE = "public class CompetitionCode { \n\n\tpublic static void main(String[] args) {\n\t\t\n\t}\n}";
+            
+    private final String PYTHON_START_CODE = "I don't know what to put for Python lol";
 
     @FXML
-    private void runcode(ActionEvent event) throws MalformedURLException, ProtocolException, IOException {
+    private void runCode(ActionEvent event) throws MalformedURLException, ProtocolException, IOException {
         
         String code = userCode.getText();
     
+        String selectedLanguage = (String) languageSelect.getSelectionModel().getSelectedItem();
         
-        try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+        BufferedReader in = null;
+        
+        if(selectedLanguage.equalsIgnoreCase("Python"))
+        {
+            try (Writer writer = new BufferedWriter(new OutputStreamWriter(
               new FileOutputStream("./DB/Testcode.py"), "utf-8"))) {
-        writer.write(code);
+            writer.write(code);
+            }
+            Process p = Runtime.getRuntime().exec("python3 ./DB/Testcode.py");
+            in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            
         }
-        Stream ret;
-        Process p = Runtime.getRuntime().exec("python ./DB/Testcode.py");
-        BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+        else if(selectedLanguage.equalsIgnoreCase("Java"))
+        {
+            try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream("./DB/Testcode.java"), "utf-8"))) {
+                writer.write(code);
+            }
+
+            Process p = Runtime.getRuntime().exec("java ./DB/Testcode.java");
+            in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+        }
         
-            
-             ret = in.lines();
+        Stream ret = in.lines();
             Object[] array = ret.toArray();
-            
+
             for(Object val : array){
                 System.out.println(val.toString());
             }
-             
-        
-       
-        //System.out.println("value is : "+ret);
-        //label.setText(ret);
         
         
     }
@@ -88,11 +114,35 @@ public class executionController implements Initializable {
         
         Process p = Runtime.getRuntime().exec("java ./DB/Testcode.java");
         BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
-        String ret = in.readLine();
-        System.out.println("value is : "+ret);
-        label.setText(ret);
+        
+        Stream ret = in.lines();
+        Object[] array = ret.toArray();
+            
+        for(Object val : array){
+            System.out.println(val.toString());
+        }
+            
+        //String ret = in.readLine();
+        //System.out.println("value is : "+ret);
+        //label.setText(array[0].toString());
         
         
+        
+    }
+    
+    @FXML
+    private void insertCode(ActionEvent event) throws MalformedURLException, ProtocolException, IOException {
+        String selectedLanguage = (String) languageSelect.getSelectionModel().getSelectedItem();
+        
+        
+        if(selectedLanguage.equalsIgnoreCase("Python"))
+        {
+            userCode.setText(PYTHON_START_CODE);
+        }
+        else if(selectedLanguage.equalsIgnoreCase("Java"))
+        {
+            userCode.setText(JAVA_START_CODE);
+        }
     }
     
   
@@ -102,7 +152,8 @@ public class executionController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        //Set the values in the combobox
+        languageSelect.setItems(LANGUAGE_LIST);
          
 
     }    
