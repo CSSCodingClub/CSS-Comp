@@ -27,6 +27,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -45,7 +46,7 @@ public class FXMLDocumentController implements Initializable {
     private void handleButtonAction(ActionEvent event) throws MalformedURLException, ProtocolException, IOException {
         
         
-        /*
+        
         URL url = new URL("https://thk34xed3a.execute-api.us-east-2.amazonaws.com/PROD/validate");
         HttpURLConnection http = (HttpURLConnection)url.openConnection();
         http.setRequestMethod("POST");
@@ -62,30 +63,34 @@ public class FXMLDocumentController implements Initializable {
         System.out.println(http.getResponseCode() + " " + http.getResponseMessage());
         System.out.println(http.getResponseMessage());
         http.disconnect();
-        */
         
-        //if("OK".equals(http.getResponseMessage().toString())){
+        
+        if("OK".equals(http.getResponseMessage().toString())){
         
         
         Parent root;
         try {
-            root = FXMLLoader.load(getClass().getClassLoader().getResource("css/comp/code-execution.fxml"));
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("css/comp/Home.fxml"));
+            
             Stage stage = new Stage();
-            stage.setTitle("My New Stage Title");
-            stage.setScene(new Scene(root, 600, 450));
+            stage.setScene(new Scene(root));
+            //stage.initStyle(StageStyle.UNDECORATED);
+            //stage.setTitle("My New Stage Title");
+            //stage.setScene(new Scene(root, 600, 450));
             stage.show();
             // Hide this current window (if this is what you want)
             ((Node)(event.getSource())).getScene().getWindow().hide();
         }
         catch (IOException e) {
             e.printStackTrace();
+            
         }
         
    
-       // }
-        //else{
-    //label.setText("Invalid Username or Password");
-    //}
+        }
+        else{
+    label.setText("Invalid Username or Password");
+    }
     }
     
 
